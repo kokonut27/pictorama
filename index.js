@@ -14,6 +14,25 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
+app.get('/post', (req, res) => {
+  res.render('post.ejs');
+});
+
+app.get('/explore', (req, res) => {
+  let post_id = req.query.post_id;
+  res.render('explore.ejs', {
+    page_id: page_id
+  });
+});
+
+app.get('/draw', (req, res) => {
+  res.render('draw.ejs');
+});
+
+
+/*
+  404 error status requests
+*/
 app.get('/404', (req, res, next) => {
   next();
 });

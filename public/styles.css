@@ -3,4 +3,53 @@
 body, html {
   font-family: 'Oswald', sans-serif;
   text-align: center;
+  padding: 15px;
+}
+
+.title a {
+  text-decoration: none;
+}
+
+.title h1 {
+  color: #32a852;
+  opacity: 0.75;
+  transition: 0.325s;
+}
+
+.title h1:hover {
+  opacity: 1;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .nav-link {
+  color: #79d191;
+  display: flex;
+  text-decoration: none;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar .nav-link:hover {
+  color: #6cba81;
+}
+
+.navbar .nav-link:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background: #000;
+  bottom: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar .nav-link:hover:before {
+  visibility: visible;
+  width: 100%;
 }

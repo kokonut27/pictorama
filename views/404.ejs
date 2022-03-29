@@ -1,13 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>pictorama | 404 error</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="/styles.css" rel="stylesheet"/>
+    <title>pictorama | 404</title>
+  </head>
+  
+  <body> 
+    <div class="navbar">
+      <div class="title">
+        <a href="/">
+          <h1>pictorama</h1>
+        </a>
+      </div>
+      <a class="nav-link" href="/">Home</a>
+      <a class="nav-link" href="/post">Post</a>
+      <a class="nav-link" href="/explore">Explore</a>
+      <a class="nav-link" href="/draw">Draw</a>
+    </div>
 
-<body>
-<h1>An error occurred!</h1>
-<p>Cannot find <%= url %>!</p>
-</body>
+    <h1>An error occurred!</h1>
+    <p>Cannot find <%= url %>!</p>
+  </body>
 </html>
