@@ -1,6 +1,7 @@
 // canvas app with drawing tools - can also post like instagram
 const express = require('express');
 const app = express();
+const path = require('path');
 
 
 app.set('views', path.join(__dirname, 'views'));
