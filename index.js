@@ -21,7 +21,7 @@ app.get('/post', (req, res) => {
 app.get('/explore', (req, res) => {
   let post_id = req.query.post_id;
   res.render('explore.ejs', {
-    page_id: page_id
+    post_id: post_id
   });
 });
 
@@ -53,11 +53,17 @@ app.use((req, res, next) => {
   })
 });
 
+/*
+  500 error status
+*/
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('500', { error: err });
 });
 
+/*
+  Runs server
+*/
 app.listen(8080, () => {
   console.log('pictorama is running');
 });
