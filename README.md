@@ -1,7 +1,5 @@
-# pictorama
-A canvas app combined with social media
-
-<br>
+<img src="https://raw.githubusercontent.com/kokonut27/pictorama/main/public/logo.png" align="center">
+<p align="center">A canvas app combined with social media</p>
 
 ## 📖 Overview
 ### 🎨 Why use pictorama?
