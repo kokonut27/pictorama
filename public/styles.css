@@ -3,39 +3,62 @@
 body, html {
   font-family: 'Oswald', sans-serif;
   text-align: center;
-  padding: 15px;
+  color: #30cf5b;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  color: #FFF;
 }
 
 .title a {
   text-decoration: none;
+  display: inline-block;
 }
 
 .title h1 {
-  color: #32a852;
-  opacity: 0.75;
+  color: #FFF;
+  opacity: 0.85;
   transition: 0.325s;
+  padding: 7px;
 }
 
 .title h1:hover {
   opacity: 1;
 }
 
+.nav-links {
+  list-style: none;
+  display: flex;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #32a852;
+  width: 100%;
+  top: 0;
+  padding-right: 10px;
 }
 
 .navbar .nav-link {
-  color: #79d191;
-  display: flex;
+  color: #FFF;
+  display: inline-block;
   text-decoration: none;
   position: relative;
   transition: 0.3s;
+  padding: 10px 12px;
 }
 
 .navbar .nav-link:hover {
-  color: #6cba81;
+  color: #FFF;
 }
 
 .navbar .nav-link:before {
@@ -51,5 +74,5 @@ body, html {
 
 .navbar .nav-link:hover:before {
   visibility: visible;
-  width: 100%;
+  width: 65%;
 }
