@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="/styles.css" rel="stylesheet"/>
     <link rel="icon" type="image/png" href="/logo.png">
-    <title>pictorama | post</title>
+    <title>Pictorama | Post</title>
   </head>
   
   <body> 
@@ -13,7 +13,7 @@
       <div class="navbar">
         <div class="title">
           <a href="/">
-            <h1>pictorama</h1>
+            <h1>Pictorama</h1>
           </a>
         </div>
         <ul class="nav-links">
@@ -24,5 +24,15 @@
         </ul>
       </div>
     </nav>
+
+    <br>
+
+    <h1>Post</h1>
+    <form method="POST" action="/post">
+      <input name="title" type="text" placeholder="Title" required>
+      <input name="content" type="text" placeholder="Content..." required>
+      <input name="file" type="file" value="Click here to attach files">
+      <input type="submit" value="Post">
+    </form>
   </body>
 </html>

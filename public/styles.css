@@ -13,6 +13,20 @@ body, html {
   padding: 0;
 }
 
+.content {
+  padding: 16px;
+}
+
+a {
+  color: #0a942f;
+  text-decoration: none;
+  transition: 0.5s;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
 nav {
   color: #FFF;
 }
@@ -90,4 +104,25 @@ nav {
 .navbar .nav-link-4:hover:before {
   visibility: visible;
   width: 59%;
+}
+
+input {
+  background: #45d16a;
+  color: #FFF;
+  padding: 10px;
+  border: 0px #45d16a;
+  border-radius: 2.5px;
+}
+
+input:hover {
+  cursor: pointer;
+}
+
+.button {
+  transition: 0.5s;
+}
+
+.button:hover {
+  box-shadow: 10px 10px 5px #aaaaaa;
+  transform: scale(1.1, 1.1);
 }
