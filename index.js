@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
   res.render('index.ejs');
 });
 
-app.get('/post', (req, res) => {
+app.get('/post', (req, res) => { // use post request later to recieve title content etc.
   res.render('post.ejs');
 });
 
