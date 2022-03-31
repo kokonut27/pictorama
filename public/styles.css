@@ -72,7 +72,22 @@ nav {
   transition: all 0.3s ease-in-out;
 }
 
-.navbar .nav-link:hover:before {
+.navbar .nav-link-1:hover:before {
+  visibility: visible;
+  width: 60%;
+}
+
+.navbar .nav-link-2:hover:before {
+  visibility: visible;
+  width: 56%;
+}
+
+.navbar .nav-link-3:hover:before {
   visibility: visible;
   width: 65%;
+}
+
+.navbar .nav-link-4:hover:before {
+  visibility: visible;
+  width: 59%;
 }
