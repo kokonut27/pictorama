@@ -21,17 +21,25 @@
           <li><a class="nav-link nav-link-2" href="/post">Post</a></li>
           <li><a class="nav-link nav-link-3" href="/explore">Explore</a></li>
           <li><a class="nav-link nav-link-4" href="/draw">Draw</a></li>
+          <li><a class="nav-link nav-link-5" href="/rules">Rules</a></li>
+          <% if (loggedin) { %>
+            <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
+          <% } else { %>
+            <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
+          <% } %>
         </ul>
       </div>
     </nav>
 
     <br>
 
-    <h2>Error: <%= error.message %></h2>
-    <% if (settings['verbose errors']) { %>
-      <pre><%= error.stack %></pre>
-    <% } else { %>
-      <p>An error occurred!</p>
-    <% } %>
+    <div class="content">
+      <h2>Error: <%= error.message %></h2>
+      <% if (settings['verbose errors']) { %>
+        <pre><%= error.stack %></pre>
+      <% } else { %>
+        <p>An error occurred!</p>
+      <% } %>
+    </div>
   </body>
 </html>

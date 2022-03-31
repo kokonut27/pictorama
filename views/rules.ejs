@@ -21,8 +21,28 @@
           <li><a class="nav-link nav-link-2" href="/post">Post</a></li>
           <li><a class="nav-link nav-link-3" href="/explore">Explore</a></li>
           <li><a class="nav-link nav-link-4" href="/draw">Draw</a></li>
+          <li><a class="nav-link nav-link-5" href="/rules">Rules</a></li>
+          <% if (loggedin) { %>
+            <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
+          <% } else { %>
+            <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
+          <% } %>
         </ul>
       </div>
     </nav>
+
+    <br>
+
+    <div class="content">
+      <h1>Posting guidelines</h1>
+      <br>
+      <ul>
+        <li>1. No bad words or cussing.</li>
+        <li>2. No spamming content.</li>
+        <li>3. Don't create alt accounts to 'heart spam'.</li>
+        <li>4. No copying and plagiarism.</li>
+        <h5>Pictorama is licensed under the MIT License.</h5>
+      </ul>
+    </div>
   </body>
 </html>

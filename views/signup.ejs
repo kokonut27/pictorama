@@ -21,8 +21,29 @@
           <li><a class="nav-link nav-link-2" href="/post">Post</a></li>
           <li><a class="nav-link nav-link-3" href="/explore">Explore</a></li>
           <li><a class="nav-link nav-link-4" href="/draw">Draw</a></li>
+          <li><a class="nav-link nav-link-5" href="/rules">Rules</a></li>
+          <% if (loggedin) { %>
+            <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
+          <% } else { %>
+            <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
+          <% } %>
         </ul>
       </div>
     </nav>
+
+    <br>
+
+    <div class="content">
+      <h1>Signup</h1>
+      <br>
+      <form action="/signup" method="POST">
+        <input type="text" name="signup-username" placeholder="Username" required>
+        <br>
+        <input type="password" name="signup-password" placeholder="Password" required>
+        <br></br>
+        <input class="button" type="button" value="Create account!">
+      </form>
+      <br>
+    </div>
   </body>
 </html>

@@ -114,10 +114,6 @@ input {
   border-radius: 2.5px;
 }
 
-input:hover {
-  cursor: pointer;
-}
-
 .button {
   transition: 0.5s;
 }
@@ -125,4 +121,5 @@ input:hover {
 .button:hover {
   box-shadow: 10px 10px 5px #aaaaaa;
   transform: scale(1.1, 1.1);
+  cursor: pointer;
 }

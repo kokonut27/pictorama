@@ -21,8 +21,22 @@
           <li><a class="nav-link nav-link-2" href="/post">Post</a></li>
           <li><a class="nav-link nav-link-3" href="/explore">Explore</a></li>
           <li><a class="nav-link nav-link-4" href="/draw">Draw</a></li>
+          <li><a class="nav-link nav-link-5" href="/rules">Rules</a></li>
+          <% if (loggedin) { %>
+            <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
+          <% } else { %>
+            <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
+          <% } %>
         </ul>
       </div>
     </nav>
+
+    <br>
+
+    <div class="content">
+      <h1>Draw</h1>
+      <br>
+      <!-- list drawings and then draw button, and then separate drawing route to draw -->
+    </div>
   </body>
 </html>

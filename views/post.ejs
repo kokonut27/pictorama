@@ -21,18 +21,26 @@
           <li><a class="nav-link nav-link-2" href="/post">Post</a></li>
           <li><a class="nav-link nav-link-3" href="/explore">Explore</a></li>
           <li><a class="nav-link nav-link-4" href="/draw">Draw</a></li>
+          <li><a class="nav-link nav-link-5" href="/rules">Rules</a></li>
+          <% if (loggedin) { %>
+            <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
+          <% } else { %>
+            <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
+          <% } %>
         </ul>
       </div>
     </nav>
 
     <br>
 
-    <h1>Post</h1>
-    <form method="POST" action="/post">
-      <input name="title" type="text" placeholder="Title" required>
-      <input name="content" type="text" placeholder="Content..." required>
-      <input name="file" type="file" value="Click here to attach files">
-      <input type="submit" value="Post">
-    </form>
+    <div class="content">
+      <h1>Post</h1>
+      <form method="POST" action="/post">
+        <input name="title" type="text" placeholder="Title" required>
+        <input name="content" type="text" placeholder="Content..." required>
+        <input name="file" type="file" value="Click here to attach files">
+        <input type="submit" value="Post">
+      </form>
+    </div>
   </body>
 </html>
