@@ -58,7 +58,11 @@ app.get('/login', (req, res) => {
   res.render('login.ejs');
 });
 
-// app.post('/signup')
+// app.post('/login')
+
+app.get('/profile', (req, res) => {
+  res.render('profile.ejs');
+});
 
 
 /*
