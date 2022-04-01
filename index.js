@@ -15,14 +15,19 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.enable('verbose errors');
 
+let loggedin = true; // dummy variable for now
+
 
 app.get('/', (req, res) => {
-  
-  res.render('index.ejs');
+  res.render('index.ejs', {
+    loggedin: loggedin
+  });
 });
 
 app.get('/post', (req, res) => { // use post request later to recieve title content etc.
-  res.render('post.ejs');
+  res.render('post.ejs', {
+    loggedin: loggedin
+  });
 });
 
 app.post('/post', (req, res) => {
@@ -31,38 +36,51 @@ app.post('/post', (req, res) => {
 
   // actually create post here
   
-  res.redirect('/explore'); // add id
+  res.redirect('/explore', {
+    loggedin: loggedin
+  }); // add id
 });
 
 app.get('/explore', (req, res) => {
   let post_id = req.query.id;
   res.render('explore.ejs', {
-    post_id: post_id
+    post_id: post_id,
+    loggedin: loggedin
   });
 });
 
 app.get('/draw', (req, res) => {
-  res.render('draw.ejs');
+  res.render('draw.ejs', {
+    loggedin: loggedin
+  });
 });
 
 app.get('/rules', (req, res) => {
-  res.render('rules.ejs');
+  res.render('rules.ejs', {
+    loggedin: loggedin
+  });
 });
 
 app.get('/signup', (req, res) => {
-  res.render('signup.ejs');
+  res.render('signup.ejs', {
+    loggedin: loggedin
+  });
 });
 
 // app.post('/signup')
 
 app.get('/login', (req, res) => {
-  res.render('login.ejs');
+  res.render('login.ejs', {
+    loggedin: loggedin
+  });
 });
 
 // app.post('/login')
 
 app.get('/profile', (req, res) => {
-  res.render('profile.ejs');
+  res.render('profile.ejs', {
+    loggedin: loggedin
+  });
 });
 
 
@@ -78,7 +96,10 @@ app.use((req, res, next) => {
 
   res.format({
     html: function () {
-      res.render('404', { url: req.url })
+      res.render('404', { 
+        url: req.url, 
+        loggedin: loggedin
+      });
     },
     json: function () {
       res.json({ error: 'Not found' })
@@ -94,7 +115,10 @@ app.use((req, res, next) => {
 */
 app.use((err, req, res, next) => {
   res.status(err.status || 500);
-  res.render('500', { error: err });
+  res.render('500', { 
+    error: err,
+    loggedin: loggedin
+  });
 });
 
 /*

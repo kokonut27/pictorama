@@ -103,7 +103,17 @@ nav {
 
 .navbar .nav-link-4:hover:before {
   visibility: visible;
-  width: 59%;
+  width: 58%;
+}
+
+.navbar .nav-link-5:hover:before {
+  visibility: visible;
+  width: 60%;
+}
+
+.navbar .nav-link-6:hover:before {
+  visibility: visible;
+  width: 64%;
 }
 
 input {
