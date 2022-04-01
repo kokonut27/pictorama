@@ -3,8 +3,12 @@ const app = express();
 const path = require('path');
 const multer = require('multer');
 const upload = multer();
+const cookie = require('cookie');
+const dbe = require('@replit/database');
+const db = new dbe.Database();
+const cookieparser = require('cookie-parser');
 
-
+app.use(cookieparser.cookieParse());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 app.use(upload.array()); 
@@ -94,16 +98,16 @@ app.use((req, res, next) => {
   res.status(404);
 
   res.format({
-    html: function () {
+    html: () => {
       res.render('404', { 
         url: req.url, 
         loggedin: loggedin
       });
     },
-    json: function () {
+    json: () => {
       res.json({ error: 'Not found' })
     },
-    default: function () {
+    default: () => {
       res.type('txt').send('Not found')
     }
   })
