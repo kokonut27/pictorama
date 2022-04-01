@@ -4,11 +4,13 @@ const path = require('path');
 const multer = require('multer');
 const upload = multer();
 const cookie = require('cookie');
-const dbe = require('@replit/database');
-const db = new dbe.Database();
-const cookieparser = require('cookie-parser');
+const Database = require('@replit/database');
+const db = new Database();
+const cookieParse = require('cookie-parser');
+const escapeHtml = require('escape-html');
+const url = require('url');
 
-app.use(cookieparser.cookieParse());
+app.use(cookieParse());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 app.use(upload.array()); 

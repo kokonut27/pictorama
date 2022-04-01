@@ -25,6 +25,7 @@
           <% if (loggedin) { %>
             <li><a class="nav-link nav-link-6" href="/profile">Profile</a></li>
           <% } else { %>
+            <!-- if account exists, redirect to login -->
             <li><a class="nav-link nav-link-6" href="/signup">Signup</li>
           <% } %>
         </ul>
@@ -43,6 +44,8 @@
         <br></br>
         <input class="button" type="button" value="Create account!">
       </form>
+      <br>
+      <h5>Already have an account? <a href="/login">Login</a></h5>
       <br>
     </div>
   </body>
