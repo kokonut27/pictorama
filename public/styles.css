@@ -14,7 +14,7 @@ body, html {
 }
 
 .content {
-  padding: 16px;
+  padding: 40px;
 }
 
 a {
@@ -125,7 +125,7 @@ input {
 }
 
 .input {
-  border: 1px #333;
+  border: 4px #333;
 }
 
 .button {
@@ -133,7 +133,12 @@ input {
 }
 
 .button:hover {
-  box-shadow: 10px 10px 5px #aaaaaa;
+  box-shadow: 0px 8px 16px 0px #aaaaaa;
   transform: scale(1.1, 1.1);
   cursor: pointer;
+}
+
+
+li {
+  list-style-type: none;
 }

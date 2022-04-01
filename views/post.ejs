@@ -36,14 +36,13 @@
     <div class="content">
       <h1>Post</h1>
       <form method="POST" action="/post">
-        <!-- add clas input -->
-        <input name="title" type="text" placeholder="Title" required>
+        <input class="input" name="title" type="text" placeholder="Title" required>
         <br></br>
-        <input name="content" type="text" placeholder="Content..." required>
+        <textarea rows="5" cols="30" class="content-input" name="content" placeholder="Content..." required></textarea>
         <br></br>
         <input name="file" type="file" value="Click here to attach files">
         <br></br>
-        <input type="submit" value="Post">
+        <input class="button" type="submit" value="Post">
       </form>
     </div>
   </body>
