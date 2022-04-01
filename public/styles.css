@@ -124,6 +124,10 @@ input {
   border-radius: 2.5px;
 }
 
+.input {
+  border: 1px #333;
+}
+
 .button {
   transition: 0.5s;
 }

@@ -1,18 +1,20 @@
 {
   "name": "pictorama",
-  "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js"
   },
-  "keywords": [],
-  "author": "",
   "license": "MIT",
   "dependencies": {
     "ejs": "^3.1.6",
     "express": "^4.17.3",
-    "multer": "^1.4.4"
+    "multer": "^1.4.4",
+    "@replit/database": "^2.0.1",
+    "async": "^0.9.2",
+    "body-parser": "^1.19.2",
+    "content-type": "^1.0.4",
+    "cookie": "^0.4.2",
+    "cookie-parser": "^1.4.6"
   }
 }
