@@ -17,6 +17,7 @@ app.enable('verbose errors');
 
 
 app.get('/', (req, res) => {
+  
   res.render('index.ejs');
 });
 
