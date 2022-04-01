@@ -31,3 +31,7 @@ To run the server, insert the following command in your shell, and you should be
 ```bash
 npm run start
 ```
+
+### ✈ Visit the site
+
+Visit Pictorama at [pictorama.vercel.app](https://pictorama.vercel.app).
