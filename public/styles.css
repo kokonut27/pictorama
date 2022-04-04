@@ -120,12 +120,14 @@ input {
   background: #45d16a;
   color: #FFF;
   padding: 10px;
-  border: 0px #45d16a;
+  border: 0px hidden #45d16a;
   border-radius: 2.5px;
+  font-family: 'Oswald', sans-serif;
 }
 
 .input {
-  border: 4px #333;
+  border: 1px solid #454545;
+  width: 70%;
 }
 
 .button {
@@ -136,6 +138,53 @@ input {
   box-shadow: 0px 8px 16px 0px #aaaaaa;
   transform: scale(1.1, 1.1);
   cursor: pointer;
+}
+
+.insert-pic-post:hover {
+  cursor: pointer;
+}
+
+/* Modern Browsers */
+textarea::placeholder, input::placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+/* WebKit, Edge */
+textarea::-webkit-input-placeholder, input::-webkit-input-placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+/* Firefox 4-18 */
+textarea:-moz-placeholder, input:-moz-placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+/* Firefox 19+ */
+textarea::-moz-placeholder, input::-moz-placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+/* IE 10-11 */
+textarea:-ms-input-placeholder, input:-ms-input-placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+/* Edge */
+textarea::-ms-input-placeholder, input::-ms-input-placeholder {
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.content-input {
+  color: #FFF;
+  background: #45d16a;
+  border-radius: 2.5px;
+  width: 70%;
+  font-family: 'Oswald', sans-serif;
 }
 
 

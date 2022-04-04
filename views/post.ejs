@@ -35,15 +35,19 @@
 
     <div class="content">
       <h1>Post</h1>
+      <br>
       <form method="POST" action="/post">
         <input class="input" name="title" type="text" placeholder="Title" required>
         <br></br>
-        <textarea rows="5" cols="30" class="content-input" name="content" placeholder="Content..." required></textarea>
-        <br></br>
-        <input name="file" type="file" value="Click here to attach files">
-        <br></br>
+        <textarea rows="7" cols="25" class="content-input" name="content" placeholder="Content..." required></textarea>
+        <br>
+        <label for="files" class="insert-pic-post">Insert pictures!</label>
+        <input id="files" style="visibility: hidden; content: ''; display: none;" name="file" type="file" value="Click here to attach files" multiple>
+        <br></br><br>
         <input class="button" type="submit" value="Post">
       </form>
     </div>
+            
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   </body>
 </html>
