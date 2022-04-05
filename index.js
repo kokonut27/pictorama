@@ -20,18 +20,18 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.enable('verbose errors');
 
-let loggedin = true; // dummy variable for now
+app.locals.loggedin = false;
 
 
 app.get('/', (req, res) => {
   res.render('index.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
 app.get('/post', (req, res) => { // use post request later to recieve title content etc.
   res.render('post.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
@@ -42,7 +42,7 @@ app.post('/post', (req, res) => {
   // actually create post here
   
   res.redirect('/explore', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   }); // add id
 });
 
@@ -50,25 +50,25 @@ app.get('/explore', (req, res) => {
   let post_id = req.query.id;
   res.render('explore.ejs', {
     post_id: post_id,
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
 app.get('/draw', (req, res) => {
   res.render('draw.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
 app.get('/rules', (req, res) => {
   res.render('rules.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
 app.get('/signup', (req, res) => {
   res.render('signup.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
@@ -76,7 +76,7 @@ app.get('/signup', (req, res) => {
 
 app.get('/login', (req, res) => {
   res.render('login.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
@@ -84,7 +84,7 @@ app.get('/login', (req, res) => {
 
 app.get('/profile', (req, res) => {
   res.render('profile.ejs', {
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedineag
   });
 });
 
@@ -122,7 +122,7 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500);
   res.render('500', { 
     error: err,
-    loggedin: loggedin
+    loggedin: req.app.locals.loggedin
   });
 });
 
