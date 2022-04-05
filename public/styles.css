@@ -191,3 +191,31 @@ textarea:focus {
 li {
   list-style-type: none;
 }
+
+footer {
+  background: #30974b;
+  color: #FFF;
+  width: 100%;
+  bottom: 0;
+  padding: 10px;
+  font-size: 75%;
+}
+
+footer a {
+  color: #FFF;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+}
+
+.help {
+  display: flex;
+}
