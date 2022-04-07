@@ -20,10 +20,13 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.enable('verbose errors');
 
-app.locals.loggedin = false;
+app.locals.loggedin;
 
 
 app.get('/', (req, res) => {
+  let cookies = cookie.parse(req.headers.cookie || '');
+
+  req.app.locals.loggedin = cookies.loggedin
   res.render('index.ejs', {
     loggedin: req.app.locals.loggedin
   });
@@ -40,10 +43,10 @@ app.post('/post', (req, res) => {
   // res.send(`${req.body.title} has been posted!`);
 
   // actually create post here
+
+  res.statusCode = 302;
   
-  res.redirect('/explore', {
-    loggedin: req.app.locals.loggedin
-  }); // add id
+  res.redirect('/explore'); // add id
 });
 
 app.get('/explore', (req, res) => {
@@ -72,7 +75,34 @@ app.get('/signup', (req, res) => {
   });
 });
 
-// app.post('/signup')
+app.post('/signup', (req, res) => {
+  let query = url.parse(req.url, true, true).query;
+
+  console.log(query);
+  console.log(url.parse(req.url, true, true));
+
+  if (query && query.loggedin) {
+    res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(true), {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    }));
+
+    res.statusCode = 302;
+    res.setHeader('Location', req.headers.referer || '/signup');
+    res.redirect('/profile');
+  };
+
+  let cookies = cookie.parse(req.headers.cookie || '');
+  console.log(cookies);
+  req.app.locals.loggedin = cookies.loggedin;
+
+  res.setHeader('Content-Type', 'text/html; charset=UTF-8');
+
+  let username = req.body.signupUsername;
+  let password = req.body.signupPassword;
+
+  console.log(username, password);
+});
 
 app.get('/login', (req, res) => {
   res.render('login.ejs', {

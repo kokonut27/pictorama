@@ -199,6 +199,8 @@ footer {
   bottom: 0;
   padding: 10px;
   font-size: 75%;
+  padding-right: 20vw;
+  padding-left: 20vw;
 }
 
 footer a {

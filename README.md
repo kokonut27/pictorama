@@ -1,5 +1,6 @@
-
 <img src="https://raw.githubusercontent.com/kokonut27/pictorama/main/public/logo.png">
+
+> Pronounced as (Pict-or-ah-muh)
 
 <p>A canvas app combined with social media</p>
 
