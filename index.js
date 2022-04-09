@@ -24,6 +24,10 @@ app.locals.loggedin;
 
 
 app.get('/', (req, res) => {
+  res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(false), {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 7 // 1 week
+  }));
   let cookies = cookie.parse(req.headers.cookie || '');
 
   req.app.locals.loggedin = cookies.loggedin
@@ -76,32 +80,24 @@ app.get('/signup', (req, res) => {
 });
 
 app.post('/signup', (req, res) => {
-  let query = url.parse(req.url, true, true).query;
+  res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(true), {
+    httpOnly: true,
+    maxAge: 60 * 60 * 24 * 7 // 1 week
+  }));
 
-  console.log(query);
-  console.log(url.parse(req.url, true, true));
-
-  if (query && query.loggedin) {
-    res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(true), {
-      httpOnly: true,
-      maxAge: 60 * 60 * 24 * 7 // 1 week
-    }));
-
-    res.statusCode = 302;
-    res.setHeader('Location', req.headers.referer || '/signup');
-    res.redirect('/profile');
-  };
+  res.statusCode = 302;
+  res.setHeader('Location', req.headers.referer || '/signup');
 
   let cookies = cookie.parse(req.headers.cookie || '');
-  console.log(cookies);
   req.app.locals.loggedin = cookies.loggedin;
-
   res.setHeader('Content-Type', 'text/html; charset=UTF-8');
 
   let username = req.body.signupUsername;
   let password = req.body.signupPassword;
 
-  console.log(username, password);
+  // Add to database later
+  
+  res.redirect('/profile');
 });
 
 app.get('/login', (req, res) => {

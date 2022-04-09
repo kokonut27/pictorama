@@ -34,20 +34,26 @@
 
     <br>
 
-    <div class="content">
-      <h1>Signup</h1>
-      <br>
-      <form action="/signup" method="POST">
-        <input type="text" name="signupUsername" placeholder="Username" required>
-        <br></br>
-        <input type="password" name="signupPassword" placeholder="Password" required>
-        <br></br><br>
-        <input class="button" type="submit" value="Create account!">
-      </form>
-      <br>
-      <h5>Already have an account? <a href="/login">Login</a></h5>
-      <br>
+    <div class="whole-content">
+      <div class="content">
+        <h1>Signup</h1>
+        <br>
+        <!--
+          note to self: maybe use GitHub and/or Replit Auth instead
+        -->
+        
+        <form action="/signup" method="POST">
+          <input type="text" name="signupUsername" placeholder="Username" required>
+          <br></br>
+          <input type="password" name="signupPassword" placeholder="Password" required>
+          <br></br><br>
+          <input class="button" type="submit" value="Create account!">
+        </form>
+        <br>
+        <h5>Already have an account? <a href="/login">Login</a></h5>
+        <br>
+      </div>
+      <%- include('footer'); -%>
     </div>
-    <%- include('footer'); -%>        
   </body>
 </html>

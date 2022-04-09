@@ -13,6 +13,13 @@ body, html {
   padding: 0;
 }
 
+.whole-content {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
 .content {
   padding: 40px;
 }
