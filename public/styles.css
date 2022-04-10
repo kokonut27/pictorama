@@ -131,7 +131,7 @@ input {
   background: #45d16a;
   color: #FFF;
   padding: 10px;
-  border: 0px hidden #45d16a;
+  border: 0px hidden;
   border-radius: 2.5px;
   font-family: 'Oswald', sans-serif;
 }
@@ -149,6 +149,11 @@ input {
   box-shadow: 0px 8px 16px 0px #aaaaaa;
   transform: scale(1.1, 1.1);
   cursor: pointer;
+}
+
+.delete-account {
+  background: #d42626;
+  color: #FFF;
 }
 
 .insert-pic-post:hover {
