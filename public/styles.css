@@ -24,6 +24,10 @@ body, html {
   padding: 40px;
 }
 
+.guidelines {
+  text-align: left;
+}
+
 a {
   color: #0a942f;
   text-decoration: none;
