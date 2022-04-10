@@ -20,8 +20,6 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.enable('verbose errors');
 
-app.locals.loggedin;
-
 
 app.get('/', (req, res) => {
   res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(false), {
