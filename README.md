@@ -12,7 +12,7 @@
 
 
 ### 💾 Requirements
-* Node.js v12+ (pictorama was developed using v14)
+* Node.js v12+ (pictorama was developed using v16)
 * Git installed
 
 ### 🔌 Installation
