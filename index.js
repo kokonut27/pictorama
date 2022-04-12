@@ -5,19 +5,17 @@ const multer = require('multer');
 const upload = multer();
 const cookie = require('cookie');
 const db = require('better-replit-db');
-const cookieParse = require('cookie-parser');
+const cookieParser = require('cookie-parser');
 const escapeHtml = require('escape-html');
 const url = require('url');
 const session = require('express-session');
-const flash = require('connect-flash');
+const flash = require('express-flash');
+const handlebars = require('express-handlebars');
+const mySecret = process.env['secret'];
+const sessionStore = new session.MemoryStore;
 
 
-const mySecret = process.env['secret']
-app.use((req, res, next) => {
-  res.locals.messages = require('express-messages')(req, res);
-  next();
-});
-app.use(cookieParse());
+app.use(cookieParser(mySecret));
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 app.use(upload.array());
@@ -26,8 +24,9 @@ app.use(session({
     maxAge: 60 * 60 * 24 * 7 
   }, 
   secret: mySecret,
-  resave: false, 
-  saveUninitialized: false
+  resave: true, 
+  saveUninitialized: false,
+  store: sessionStore
 }));
 app.use(flash());
 
@@ -44,6 +43,7 @@ app.get('/', (req, res) => {
     httpOnly: true,
     maxAge: 60 * 60 * 24 * 7 // 1 week
   }));
+  let cookies = cookie.parse(req.headers.cookie || '');
 
   req.app.locals.loggedin = cookies.loggedin
   res.render('index.ejs', {
@@ -88,13 +88,7 @@ app.get('/rules', (req, res) => {
   });
 });
 
-app.get('/signup', (req, res) => {
-  res.render('signup.ejs', {
-    loggedin: req.app.locals.loggedin
-  });
-});
-
-app.post('/signup', (req, res) => {
+app.all('/signup', (req, res) => {
   res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(true), {
     httpOnly: true,
     maxAge: 60 * 60 * 24 * 7 // 1 week
@@ -113,7 +107,7 @@ app.post('/signup', (req, res) => {
 
   if (confirmPassword != password) {
     req.flash('error', 'Password has been confirmed incorrectly!');
-    console.log("hello buddy ur password is incorrect D:")
+    console.log("hello buddy ur password is incorrect D:");
   };
 
   db.get(username).then(k => {
@@ -124,6 +118,11 @@ app.post('/signup', (req, res) => {
 
       res.redirect("/profile");
     };
+  });
+  
+  res.render('signup.ejs', {
+    loggedin: req.app.locals.loggedin,
+    expressFlash: req.flash('error')
   });
 });
 
