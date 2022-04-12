@@ -4,29 +4,46 @@ const path = require('path');
 const multer = require('multer');
 const upload = multer();
 const cookie = require('cookie');
-const Database = require('@replit/database');
-const db = new Database();
+const db = require('better-replit-db');
 const cookieParse = require('cookie-parser');
 const escapeHtml = require('escape-html');
 const url = require('url');
+const session = require('express-session');
+const flash = require('connect-flash');
 
+
+const mySecret = process.env['secret']
+app.use((req, res, next) => {
+  res.locals.messages = require('express-messages')(req, res);
+  next();
+});
 app.use(cookieParse());
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
-app.use(upload.array()); 
+app.use(upload.array());
+app.use(session({ 
+  cookie: { 
+    maxAge: 60 * 60 * 24 * 7 
+  }, 
+  secret: mySecret,
+  resave: false, 
+  saveUninitialized: false
+}));
+app.use(flash());
 
 app.use(express.static(__dirname + '/public'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.enable('verbose errors');
 
+// console.log(db.list());
+// db.empty();
 
 app.get('/', (req, res) => {
   res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(false), {
     httpOnly: true,
     maxAge: 60 * 60 * 24 * 7 // 1 week
   }));
-  let cookies = cookie.parse(req.headers.cookie || '');
 
   req.app.locals.loggedin = cookies.loggedin
   res.render('index.ejs', {
@@ -92,10 +109,22 @@ app.post('/signup', (req, res) => {
 
   let username = req.body.signupUsername;
   let password = req.body.signupPassword;
+  let confirmPassword = req.body.confirmSignupPassword;
 
-  // Add to database later
-  
-  res.redirect('/profile');
+  if (confirmPassword != password) {
+    req.flash('error', 'Password has been confirmed incorrectly!');
+    console.log("hello buddy ur password is incorrect D:")
+  };
+
+  db.get(username).then(k => {
+    if (k) {
+      req.flash('error', `'${username}' username already exists!`);
+    } else {
+      db.set(username, password);
+
+      res.redirect("/profile");
+    };
+  });
 });
 
 app.get('/login', (req, res) => {
@@ -104,11 +133,11 @@ app.get('/login', (req, res) => {
   });
 });
 
-// app.post('/login')
+// app.post('/login') - use db.get();
 
 app.get('/profile', (req, res) => {
   res.render('profile.ejs', {
-    loggedin: req.app.locals.loggedineag
+    loggedin: req.app.locals.loggedin
   });
 });
 

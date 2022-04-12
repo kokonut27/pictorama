@@ -36,6 +36,7 @@
 
     <div class="whole-content">
       <div class="content">
+        <%- messages('messages', locals) %>
         <h1>Signup</h1>
         <br>
         <!--
@@ -46,6 +47,8 @@
           <input type="text" name="signupUsername" placeholder="Username" required>
           <br></br>
           <input type="password" name="signupPassword" placeholder="Password" required>
+          <br></br>
+          <input type="password" name="confirmSignupPassword" placeholder="Confirm password" required>
           <br></br><br>
           <input class="button" type="submit" value="Create account!">
         </form>

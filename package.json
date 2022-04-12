@@ -7,15 +7,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@replit/database": "^2.0.1",
     "async": "^3.2.3",
+    "better-replit-db": "^1.1.9",
     "body-parser": "^1.20.0",
+    "connect-flash": "^0.1.1",
     "content-type": "^1.0.4",
     "cookie": "^0.4.2",
     "cookie-parser": "^1.4.6",
     "ejs": "^3.1.6",
     "escape-html": "^1.0.3",
     "express": "^4.17.3",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.17.2",
     "multer": "^1.4.4"
   }
 }
