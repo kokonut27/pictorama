@@ -4,7 +4,7 @@ const path = require('path');
 const multer = require('multer');
 const upload = multer();
 const cookie = require('cookie');
-const db = require('better-replit-db');
+const database = require('@replit/database');
 const cookieParser = require('cookie-parser');
 const escapeHtml = require('escape-html');
 const url = require('url');
@@ -13,7 +13,7 @@ const flash = require('express-flash');
 const handlebars = require('express-handlebars');
 const mySecret = process.env['secret'];
 const sessionStore = new session.MemoryStore;
-
+const db = new database();
 
 app.use(cookieParser(mySecret));
 app.use(express.json()); 
@@ -39,11 +39,16 @@ app.enable('verbose errors');
 // db.empty();
 
 app.get('/', (req, res) => {
-  res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(false), {
-    httpOnly: true,
-    maxAge: 60 * 60 * 24 * 7 // 1 week
-  }));
   let cookies = cookie.parse(req.headers.cookie || '');
+  
+  if (cookies.loggedin) {
+    console.log("'loggedin' cookie exists!");
+  } else {
+    res.setHeader('Set-Cookie', cookie.serialize('loggedin', Boolean(false), {
+      httpOnly: true,
+      maxAge: 60 * 60 * 24 * 7 // 1 week
+    }));
+  };
 
   req.app.locals.loggedin = cookies.loggedin
   res.render('index.ejs', {
@@ -94,9 +99,6 @@ app.all('/signup', (req, res) => {
     maxAge: 60 * 60 * 24 * 7 // 1 week
   }));
 
-  res.statusCode = 302;
-  res.setHeader('Location', req.headers.referer || '/signup');
-
   let cookies = cookie.parse(req.headers.cookie || '');
   req.app.locals.loggedin = cookies.loggedin;
   res.setHeader('Content-Type', 'text/html; charset=UTF-8');
@@ -107,22 +109,25 @@ app.all('/signup', (req, res) => {
 
   if (confirmPassword != password) {
     req.flash('error', 'Password has been confirmed incorrectly!');
-    console.log("hello buddy ur password is incorrect D:");
   };
 
   db.get(username).then(k => {
     if (k) {
       req.flash('error', `'${username}' username already exists!`);
+      
+      res.render('signup.ejs', {
+        loggedin: req.app.locals.loggedin,
+        expressFlash: req.flash('error')
+      });
     } else {
       db.set(username, password);
 
-      res.redirect("/profile");
+      return res.redirect("/profile");
     };
-  });
-  
-  res.render('signup.ejs', {
-    loggedin: req.app.locals.loggedin,
-    expressFlash: req.flash('error')
+  }).catch(() => { // ${username} key does not exist
+    db.set(username, password);
+
+    return res.redirect("/profile");
   });
 });
 

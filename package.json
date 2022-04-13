@@ -7,8 +7,8 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@replit/database": "^2.0.1",
     "async": "^3.2.3",
-    "better-replit-db": "^1.1.9",
     "body-parser": "^1.20.0",
     "connect-flash": "^0.1.1",
     "content-type": "^1.0.4",
